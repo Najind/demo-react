@@ -25,6 +25,13 @@ jobs:
         with:
           bun-version: 1.2.18
 
+      - name: Caching Bun
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
+
       - name: Install Dependencies
         run: bun i
 
@@ -50,5 +57,4 @@ jobs:
           name: dist-folder
           path: dist
 
-      - name: Deploy
-        run: echo "Deploying..."
+      - nam
